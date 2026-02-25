@@ -1,0 +1,1065 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ganpati Hardware — Haveli Kharagpur, Bihar</title>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800;900&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --yellow: #FFD600;
+    --red: #CC1111;
+    --black: #111111;
+    --white: #FFFFFF;
+    --gray: #F5F5F0;
+    --mid: #888;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; font-size: 16px; }
+
+  body {
+    font-family: 'Barlow', sans-serif;
+    background: var(--white);
+    color: var(--black);
+    overflow-x: hidden;
+  }
+
+  /* ─── NAV ─── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: var(--black);
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 5vw;
+    height: 60px;
+  }
+
+  .nav-logo {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 900; font-size: 1.4rem; letter-spacing: 0.04em;
+    color: var(--yellow); text-decoration: none;
+  }
+
+  .nav-links {
+    display: flex; gap: 2rem; list-style: none;
+  }
+
+  .nav-links a {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 600; font-size: 0.95rem; letter-spacing: 0.1em;
+    text-transform: uppercase; color: var(--white); text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--yellow); }
+
+  .nav-cta {
+    background: var(--red); color: var(--white) !important;
+    padding: 8px 18px; 
+  }
+  .nav-cta:hover { background: #a50e0e; color: var(--white) !important; }
+
+  .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; }
+  .hamburger span { display: block; width: 24px; height: 2px; background: var(--white); transition: 0.3s; }
+
+  /* ─── HERO ─── */
+  #hero {
+    margin-top: 60px;
+    background: var(--yellow);
+    min-height: calc(100vh - 60px);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    padding: 80px 5vw;
+    gap: 40px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  #hero::after {
+    content: '';
+    position: absolute; right: -60px; bottom: -60px;
+    width: 400px; height: 400px;
+    background: var(--red);
+    border-radius: 50%;
+    opacity: 0.08;
+  }
+
+  .hero-label {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700; font-size: 0.85rem; letter-spacing: 0.2em;
+    text-transform: uppercase; color: var(--red);
+    margin-bottom: 16px;
+    display: block;
+  }
+
+  .hero-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 900; font-size: clamp(3.5rem, 7vw, 6rem);
+    line-height: 0.95; letter-spacing: -0.01em;
+    color: var(--black);
+    margin-bottom: 24px;
+  }
+
+  .hero-title span { color: var(--red); }
+
+  .hero-sub {
+    font-size: 1.1rem; line-height: 1.6; color: #333;
+    max-width: 440px; margin-bottom: 40px;
+  }
+
+  .hero-owners {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 600; font-size: 0.9rem; letter-spacing: 0.08em;
+    color: var(--black); opacity: 0.65;
+    margin-bottom: 36px; text-transform: uppercase;
+  }
+
+  .hero-actions { display: flex; gap: 16px; flex-wrap: wrap; }
+
+  .btn {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700; font-size: 1rem; letter-spacing: 0.1em;
+    text-transform: uppercase; text-decoration: none;
+    padding: 14px 28px; display: inline-flex; align-items: center; gap: 8px;
+    transition: transform 0.15s, box-shadow 0.15s;
+  }
+
+  .btn:hover { transform: translateY(-2px); }
+
+  .btn-primary {
+    background: var(--black); color: var(--yellow);
+    box-shadow: 4px 4px 0 var(--red);
+  }
+  .btn-primary:hover { box-shadow: 6px 6px 0 var(--red); }
+
+  .btn-secondary {
+    background: var(--white); color: var(--black);
+    border: 2px solid var(--black);
+    box-shadow: 4px 4px 0 var(--black);
+  }
+  .btn-secondary:hover { box-shadow: 6px 6px 0 var(--black); }
+
+  .hero-badge {
+    background: var(--red); color: var(--white);
+    display: inline-flex; align-items: center; justify-content: center;
+    flex-direction: column;
+    width: 140px; height: 140px; border-radius: 50%;
+    font-family: 'Barlow Condensed', sans-serif;
+    text-align: center;
+  }
+
+  .hero-badge .yr { font-size: 2.8rem; font-weight: 900; line-height: 1; }
+  .hero-badge .txt { font-size: 0.75rem; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; }
+
+  .hero-right {
+    display: flex; flex-direction: column;
+    align-items: flex-end; gap: 24px;
+  }
+
+  .hero-stats {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 16px; width: 100%;
+    max-width: 380px;
+  }
+
+  .stat-card {
+    background: var(--white);
+    padding: 20px;
+    border-left: 4px solid var(--red);
+  }
+
+  .stat-num {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 900; font-size: 2.2rem; color: var(--black); line-height: 1;
+  }
+
+  .stat-label {
+    font-size: 0.8rem; font-weight: 600; color: var(--mid);
+    text-transform: uppercase; letter-spacing: 0.1em; margin-top: 4px;
+  }
+
+  /* ─── TICKER ─── */
+  .ticker {
+    background: var(--red); color: var(--yellow);
+    padding: 14px 0; overflow: hidden;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700; font-size: 1rem; letter-spacing: 0.15em;
+    text-transform: uppercase;
+  }
+
+  .ticker-inner {
+    display: flex; gap: 80px; width: max-content;
+    animation: ticker 30s linear infinite;
+  }
+
+  @keyframes ticker {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+
+  /* ─── SECTION BASE ─── */
+  section { padding: 80px 5vw; }
+
+  .section-tag {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 0.8rem; font-weight: 700; letter-spacing: 0.25em;
+    text-transform: uppercase; color: var(--red);
+    display: block; margin-bottom: 12px;
+  }
+
+  .section-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 900; font-size: clamp(2.2rem, 4vw, 3.5rem);
+    line-height: 1; letter-spacing: -0.01em;
+    color: var(--black); margin-bottom: 40px;
+  }
+
+  /* ─── PRODUCTS ─── */
+  #products { background: var(--black); padding-bottom: 100px; }
+  #products .section-tag { color: var(--yellow); }
+  #products .section-title { color: var(--white); }
+
+  .products-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0;
+    border: 1px solid #1e1e1e;
+  }
+
+  .product-card {
+    background: var(--black);
+    padding: 44px 36px 40px;
+    position: relative;
+    overflow: hidden;
+    transition: background 0.3s;
+    display: flex;
+    flex-direction: column;
+    border-right: 1px solid #1e1e1e;
+    border-bottom: 1px solid #1e1e1e;
+    cursor: default;
+  }
+
+  .product-card:nth-child(3n) { border-right: none; }
+  .product-card:nth-child(4), .product-card:nth-child(5), .product-card:nth-child(6) { border-bottom: none; }
+
+  /* Ghost number — purely decorative background text */
+  .product-card::before {
+    content: attr(data-num);
+    position: absolute;
+    right: -8px; bottom: -20px;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 900; font-size: 9rem;
+    line-height: 1; color: #fff;
+    opacity: 0.025;
+    pointer-events: none;
+    transition: opacity 0.3s;
+    user-select: none;
+  }
+
+  .product-card:hover { background: #0e0e0e; }
+  .product-card:hover::before { opacity: 0.05; }
+
+  /* Yellow accent bar on left, slides in on hover */
+  .product-card::after {
+    content: '';
+    position: absolute; top: 0; left: 0;
+    width: 3px; height: 100%;
+    background: var(--yellow);
+    transform: scaleY(0); transform-origin: top;
+    transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .product-card:hover::after { transform: scaleY(1); }
+
+  /* Inline SVG icon container */
+  .product-svg {
+    width: 40px; height: 40px; margin-bottom: 24px; flex-shrink: 0;
+  }
+
+  .product-svg svg {
+    width: 100%; height: 100%;
+    stroke: #555;
+    fill: none;
+    stroke-width: 1.4;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    transition: stroke 0.3s;
+  }
+
+  .product-card:hover .product-svg svg { stroke: var(--yellow); }
+
+  .product-name {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 800; font-size: 1.3rem;
+    color: #e0e0e0; margin-bottom: 0;
+    text-transform: uppercase; letter-spacing: 0.06em;
+    line-height: 1.1;
+    transition: color 0.2s;
+  }
+
+  .product-card:hover .product-name { color: var(--white); }
+
+  .product-rule {
+    width: 28px; height: 1px;
+    background: #2a2a2a;
+    margin: 16px 0;
+    transition: width 0.35s ease, background 0.3s;
+  }
+
+  .product-card:hover .product-rule { width: 44px; background: var(--yellow); }
+
+  .product-items {
+    font-size: 0.82rem; color: #555; line-height: 2;
+    font-weight: 400; letter-spacing: 0.01em;
+    transition: color 0.2s;
+  }
+
+  .product-card:hover .product-items { color: #888; }
+
+  @media (max-width: 900px) {
+    .products-grid { grid-template-columns: 1fr 1fr; }
+    .product-card:nth-child(3n) { border-right: 1px solid #1e1e1e; }
+    .product-card:nth-child(2n) { border-right: none; }
+    .product-card:nth-child(4) { border-bottom: 1px solid #1e1e1e; }
+    .product-card:nth-child(5), .product-card:nth-child(6) { border-bottom: none; }
+  }
+
+  @media (max-width: 600px) {
+    .products-grid { grid-template-columns: 1fr; }
+    .product-card { border-right: none !important; }
+    .product-card:last-child { border-bottom: none; }
+  }
+
+  /* ─── GALLERY / PRODUCT ADS ─── */
+  #gallery { background: var(--black); color: var(--white); }
+
+  #gallery .section-title { color: var(--white); }
+
+  .ad-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+  }
+
+  .ad-card {
+    border-radius: 0;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .ad-card img {
+    width: 100%; display: block;
+    transition: transform 0.4s;
+  }
+
+  .ad-card:hover img { transform: scale(1.03); }
+
+  /* ─── ABOUT ─── */
+  #about { background: var(--yellow); }
+
+  .about-grid {
+    display: grid; grid-template-columns: 1.2fr 1fr;
+    gap: 60px; align-items: center;
+  }
+
+  .about-text p {
+    font-size: 1.05rem; line-height: 1.75; color: #222; margin-bottom: 20px;
+  }
+
+  .about-owners {
+    display: flex; flex-direction: column; gap: 12px; margin-top: 32px;
+  }
+
+  .owner-row {
+    display: flex; align-items: center; gap: 12px;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700; font-size: 1.1rem; text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .owner-dot {
+    width: 10px; height: 10px; background: var(--red); border-radius: 50%; flex-shrink: 0;
+  }
+
+  .about-aside {
+    background: var(--black); color: var(--white);
+    padding: 40px 36px;
+  }
+
+  .about-aside h3 {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 900; font-size: 1.8rem; color: var(--yellow);
+    margin-bottom: 24px; text-transform: uppercase;
+  }
+
+  .fact-row {
+    display: flex; justify-content: space-between; align-items: baseline;
+    padding: 14px 0;
+    border-bottom: 1px solid #333;
+    font-size: 0.95rem;
+  }
+
+  .fact-row:last-child { border-bottom: none; }
+  .fact-row .label { color: #aaa; }
+  .fact-row .val { font-weight: 600; color: var(--white); text-align: right; max-width: 55%; }
+
+  /* ─── REVIEWS ─── */
+  #reviews { background: var(--white); }
+
+  .reviews-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;
+  }
+
+  .review-card {
+    border: 2px solid #eee;
+    padding: 28px 24px;
+    position: relative;
+  }
+
+  .review-card::before {
+    content: '"';
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 5rem; font-weight: 900;
+    color: var(--yellow);
+    position: absolute; top: -16px; left: 20px;
+    line-height: 1;
+  }
+
+  .stars { color: #f5a623; font-size: 1.1rem; margin-bottom: 16px; letter-spacing: 2px; }
+
+  .review-text {
+    font-size: 0.95rem; line-height: 1.7; color: #333; margin-bottom: 20px;
+  }
+
+  .reviewer {
+    display: flex; align-items: center; gap: 10px;
+  }
+
+  .reviewer-avatar {
+    width: 38px; height: 38px; border-radius: 50%;
+    background: var(--yellow); display: flex; align-items: center; justify-content: center;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 900; font-size: 1rem; color: var(--black);
+    flex-shrink: 0;
+  }
+
+  .reviewer-name {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700; font-size: 1rem; text-transform: uppercase; letter-spacing: 0.05em;
+  }
+
+  .reviewer-meta { font-size: 0.78rem; color: var(--mid); }
+
+  /* ─── CONTACT ─── */
+  #contact { background: var(--black); color: var(--white); }
+
+  #contact .section-title { color: var(--white); }
+  #contact .section-tag { color: var(--yellow); }
+
+  .contact-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 60px;
+  }
+
+  .contact-info { display: flex; flex-direction: column; gap: 24px; }
+
+  .contact-row {
+    display: flex; gap: 16px; align-items: flex-start;
+  }
+
+  .contact-row-icon {
+    font-size: 1.4rem; flex-shrink: 0; margin-top: 2px;
+  }
+
+  .contact-row-label {
+    font-size: 0.75rem; font-weight: 600; letter-spacing: 0.15em;
+    text-transform: uppercase; color: var(--yellow); margin-bottom: 4px;
+  }
+
+  .contact-row-val {
+    font-size: 1rem; line-height: 1.5; color: #ddd;
+  }
+
+  .contact-row-val a {
+    color: var(--white); text-decoration: none;
+    font-weight: 600; transition: color 0.2s;
+  }
+  .contact-row-val a:hover { color: var(--yellow); }
+
+  .contact-actions {
+    display: flex; flex-direction: column; gap: 12px; margin-top: 12px;
+  }
+
+  .contact-btn {
+    display: flex; align-items: center; justify-content: center; gap: 10px;
+    padding: 16px 24px;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700; font-size: 1.05rem; letter-spacing: 0.1em;
+    text-transform: uppercase; text-decoration: none;
+    transition: transform 0.15s;
+  }
+  .contact-btn:hover { transform: translateY(-2px); }
+
+  .contact-btn-call { background: var(--yellow); color: var(--black); }
+  .contact-btn-wa { background: #25D366; color: var(--white); }
+  .contact-btn-maps { background: #4285F4; color: var(--white); }
+
+  .enquiry-form { display: flex; flex-direction: column; gap: 16px; }
+
+  .enquiry-form input,
+  .enquiry-form textarea,
+  .enquiry-form select {
+    background: #1c1c1c; border: 1px solid #333;
+    color: var(--white); padding: 14px 16px;
+    font-family: 'Barlow', sans-serif; font-size: 0.95rem;
+    outline: none; transition: border-color 0.2s;
+    width: 100%;
+  }
+
+  .enquiry-form input:focus,
+  .enquiry-form textarea:focus,
+  .enquiry-form select:focus { border-color: var(--yellow); }
+
+  .enquiry-form textarea { min-height: 120px; resize: vertical; }
+
+  .enquiry-form select option { background: #1c1c1c; }
+
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+
+  .form-label {
+    font-size: 0.75rem; font-weight: 600; letter-spacing: 0.15em;
+    text-transform: uppercase; color: #aaa; margin-bottom: 6px;
+    display: block;
+  }
+
+  .form-submit {
+    background: var(--yellow); color: var(--black);
+    border: none; cursor: pointer;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 800; font-size: 1.1rem; letter-spacing: 0.12em;
+    text-transform: uppercase; padding: 16px;
+    transition: background 0.2s, transform 0.15s;
+  }
+  .form-submit:hover { background: #e6c000; transform: translateY(-2px); }
+
+  /* ─── MAP ─── */
+  #map-section { padding: 0; }
+
+  #map-section iframe {
+    width: 100%; height: 420px; display: block; border: none;
+    filter: grayscale(20%);
+  }
+
+  /* ─── FOOTER ─── */
+  footer {
+    background: var(--red); color: var(--white);
+    padding: 32px 5vw;
+    display: flex; flex-direction: column; gap: 16px;
+  }
+
+  .footer-top {
+    display: flex; justify-content: space-between; align-items: center;
+    flex-wrap: wrap; gap: 16px;
+  }
+
+  .footer-logo {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 900; font-size: 1.8rem; letter-spacing: 0.04em;
+    color: var(--yellow);
+  }
+
+  .footer-owners {
+    font-size: 0.85rem; color: rgba(255,255,255,0.8);
+    font-style: italic;
+  }
+
+  .footer-bottom {
+    border-top: 1px solid rgba(255,255,255,0.25);
+    padding-top: 16px;
+    display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px;
+    font-size: 0.8rem; color: rgba(255,255,255,0.7);
+  }
+
+  /* ─── RESPONSIVE ─── */
+  @media (max-width: 900px) {
+    .nav-links { display: none; }
+    .hamburger { display: flex; }
+
+    #hero {
+      grid-template-columns: 1fr;
+      min-height: auto;
+      padding: 60px 5vw 50px;
+    }
+    .hero-right { align-items: flex-start; }
+    .hero-badge { display: none; }
+
+    .about-grid, .contact-grid { grid-template-columns: 1fr; gap: 36px; }
+    .ad-grid { grid-template-columns: 1fr 1fr; }
+    .reviews-grid { grid-template-columns: 1fr; }
+    .form-row { grid-template-columns: 1fr; }
+  }
+
+  @media (max-width: 600px) {
+    .ad-grid { grid-template-columns: 1fr; }
+    .products-grid { grid-template-columns: 1fr; }
+    .hero-stats { grid-template-columns: 1fr 1fr; }
+  }
+
+  /* ─── MOBILE MENU ─── */
+  .mobile-menu {
+    display: none; position: fixed; inset: 60px 0 0 0;
+    background: var(--black); z-index: 99;
+    flex-direction: column; padding: 32px 5vw; gap: 24px;
+  }
+
+  .mobile-menu.open { display: flex; }
+
+  .mobile-menu a {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700; font-size: 2rem; letter-spacing: 0.04em;
+    text-transform: uppercase; color: var(--white); text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .mobile-menu a:hover { color: var(--yellow); }
+
+  /* ─── ANIMATIONS ─── */
+  .fade-up {
+    opacity: 0; transform: translateY(30px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+  .fade-up.visible { opacity: 1; transform: translateY(0); }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">GANPATI HARDWARE</a>
+  <ul class="nav-links">
+    <li><a href="#products">Products</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#reviews">Reviews</a></li>
+    <li><a href="#contact" class="nav-cta">Contact Us</a></li>
+  </ul>
+  <div class="hamburger" id="hamburger">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#products" onclick="closeMobile()">Products</a>
+  <a href="#about" onclick="closeMobile()">About</a>
+  <a href="#reviews" onclick="closeMobile()">Reviews</a>
+  <a href="#contact" onclick="closeMobile()">Contact</a>
+  <a href="tel:+919431827156" style="color:#FFD600">📞 Call Now</a>
+  <a href="https://wa.me/919431827156" target="_blank" style="color:#25D366">WhatsApp</a>
+</div>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-left fade-up">
+    <span class="hero-label">Since 1996 · Haveli Kharagpur, Bihar</span>
+    <h1 class="hero-title">YOUR LOCAL<br><span>HARDWARE</span><br>EXPERTS.</h1>
+    <p class="hero-sub">Power tools, hand tools, paints, cleaning essentials, locks and building materials — everything under one roof in Goshala Market.</p>
+    <p class="hero-owners">Rupesh Kumar Rupesh &nbsp;·&nbsp; Abhinesh Ranjan &nbsp;·&nbsp; Amresh Anand</p>
+    <div class="hero-actions">
+      <a href="tel:+919431827156" class="btn btn-primary">📞 Call Now</a>
+      <a href="https://wa.me/919431827156?text=Hello!%20I%20found%20you%20on%20your%20website%20and%20want%20to%20enquire%20about%20your%20products." target="_blank" class="btn btn-secondary">WhatsApp</a>
+    </div>
+  </div>
+
+  <div class="hero-right fade-up" style="transition-delay:0.15s">
+    <div class="hero-badge">
+      <span class="yr">1996</span>
+      <span class="txt">Est.</span>
+    </div>
+    <div class="hero-stats">
+      <div class="stat-card">
+        <div class="stat-num">28+</div>
+        <div class="stat-label">Years of Service</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">500+</div>
+        <div class="stat-label">Products</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">3</div>
+        <div class="stat-label">Top Brands</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">⭐5.0</div>
+        <div class="stat-label">Google Rating</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TICKER -->
+<div class="ticker">
+  <div class="ticker-inner">
+    <span>Power Tools</span><span>•</span>
+    <span>Taparia Hand Tools</span><span>•</span>
+    <span>Asian Paints</span><span>•</span>
+    <span>Berger Paints</span><span>•</span>
+    <span>Locks & Hardware</span><span>•</span>
+    <span>Cleaning Essentials</span><span>•</span>
+    <span>Safety Equipment</span><span>•</span>
+    <span>Electrical Supplies</span><span>•</span>
+    <span>Power Tools</span><span>•</span>
+    <span>Taparia Hand Tools</span><span>•</span>
+    <span>Asian Paints</span><span>•</span>
+    <span>Berger Paints</span><span>•</span>
+    <span>Locks & Hardware</span><span>•</span>
+    <span>Cleaning Essentials</span><span>•</span>
+    <span>Safety Equipment</span><span>•</span>
+    <span>Electrical Supplies</span><span>•</span>
+  </div>
+</div>
+
+<!-- PRODUCTS -->
+<section id="products">
+  <span class="section-tag fade-up">What We Sell</span>
+  <h2 class="section-title fade-up">Product Categories</h2>
+
+  <div class="products-grid">
+
+    <!-- 01 Power Tools -->
+    <div class="product-card fade-up" data-num="01">
+      <div class="product-svg">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <!-- Angle grinder silhouette (simplified) -->
+          <circle cx="8" cy="16" r="4"/>
+          <rect x="8" y="10" width="13" height="5" rx="1.5"/>
+          <line x1="17" y1="10" x2="17" y2="7"/>
+          <circle cx="17" cy="6" r="1.5"/>
+          <line x1="8" y1="12.5" x2="4" y2="12.5"/>
+        </svg>
+      </div>
+      <div class="product-name">Power Tools</div>
+      <div class="product-rule"></div>
+      <div class="product-items">Angle Grinder · Drill Machine · Blow Machine · Plywood Cutter · Welding Machine</div>
+    </div>
+
+    <!-- 02 Hand Tools -->
+    <div class="product-card fade-up" data-num="02">
+      <div class="product-svg">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <!-- Wrench -->
+          <path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3-3a1 1 0 000-1.4l-1.6-1.6a1 1 0 00-1.4 0z"/>
+          <path d="M5 19l9.7-9.7"/>
+          <path d="M14.7 6.3L5 16"/>
+        </svg>
+      </div>
+      <div class="product-name">Taparia Hand Tools</div>
+      <div class="product-rule"></div>
+      <div class="product-items">Screw Driver · Wrench · T-Wrench · Spanner · Allen Key Set · Hammer · Pliers · Cutting Plier · Measuring Tape · Tester</div>
+    </div>
+
+    <!-- 03 Paints -->
+    <div class="product-card fade-up" data-num="03">
+      <div class="product-svg">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <!-- Paint bucket -->
+          <path d="M19 11c0 3-3 8-4 8s-4-5-4-8a4 4 0 018 0z"/>
+          <rect x="3" y="6" width="7" height="2.5" rx="1"/>
+          <line x1="6.5" y1="8.5" x2="6.5" y2="17"/>
+          <line x1="4" y1="17" x2="9" y2="17"/>
+        </svg>
+      </div>
+      <div class="product-name">Paints</div>
+      <div class="product-rule"></div>
+      <div class="product-items">Asian Paints · Berger Paints · Nerolac</div>
+    </div>
+
+    <!-- 04 Locks -->
+    <div class="product-card fade-up" data-num="04">
+      <div class="product-svg">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <rect x="5" y="11" width="14" height="10" rx="2"/>
+          <path d="M8 11V7a4 4 0 018 0v4"/>
+          <circle cx="12" cy="16" r="1.5" fill="#555" stroke="none"/>
+          <line x1="12" y1="17.5" x2="12" y2="19.5"/>
+        </svg>
+      </div>
+      <div class="product-name">Locks &amp; Door Hardware</div>
+      <div class="product-rule"></div>
+      <div class="product-items">Padlocks · Door Handles · Hinges · Safety Locks</div>
+    </div>
+
+    <!-- 05 Cleaning -->
+    <div class="product-card fade-up" data-num="05">
+      <div class="product-svg">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <!-- Bottle with drop -->
+          <path d="M9 2h6v4l2 4v10a1 1 0 01-1 1H8a1 1 0 01-1-1V10l2-4V2z"/>
+          <line x1="7" y1="10" x2="17" y2="10"/>
+          <path d="M12 13v4M10.5 15h3"/>
+        </svg>
+      </div>
+      <div class="product-name">Cleaning Essentials</div>
+      <div class="product-rule"></div>
+      <div class="product-items">Mop · Wiper · Harpic · Lizol Floor Cleaner · Odonil</div>
+    </div>
+
+    <!-- 06 Building -->
+    <div class="product-card fade-up" data-num="06">
+      <div class="product-svg">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path d="M3 21h18"/>
+          <path d="M5 21V8l7-5 7 5v13"/>
+          <path d="M9 21v-5h6v5"/>
+          <rect x="10.5" y="10" width="3" height="3" rx="0.5"/>
+        </svg>
+      </div>
+      <div class="product-name">Building &amp; Electrical</div>
+      <div class="product-rule"></div>
+      <div class="product-items">Building Materials · Electrical Supplies · Safety Equipment</div>
+    </div>
+
+  </div>
+</section>
+
+<!-- GALLERY / ADS -->
+<section id="gallery">
+  <span class="section-tag fade-up">Our Products</span>
+  <h2 class="section-title fade-up">Available In-Store</h2>
+  <div class="ad-grid fade-up">
+    <div class="ad-card">
+      <img src="/mnt/user-data/uploads/1000006057.png" alt="Taparia Tools Available at Ganpati Hardware" loading="lazy">
+    </div>
+    <div class="ad-card">
+      <img src="/mnt/user-data/uploads/1000006058.png" alt="Power Tools Available at Ganpati Hardware" loading="lazy">
+    </div>
+    <div class="ad-card">
+      <img src="/mnt/user-data/uploads/1000006056.png" alt="Cleaning Essentials Available at Ganpati Hardware" loading="lazy">
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="about-grid">
+    <div class="about-text fade-up">
+      <span class="section-tag">Our Story</span>
+      <h2 class="section-title">Serving Haveli Kharagpur<br>Since 1996.</h2>
+      <p>Ganpati Hardware has been the most trusted hardware destination in Goshala Market, Haveli Kharagpur for over 28 years. From professional contractors to everyday homeowners, we stock everything you need to get the job done right.</p>
+      <p>We carry India's top brands including Taparia, Asian Paints, Berger, Nerolac, Harpic, and Lizol. Our wide range of power tools, hand tools, paints, locks, cleaning products, and building materials makes us a true one-stop shop for hardware and home improvement.</p>
+      <div class="about-owners">
+        <div class="owner-row"><span class="owner-dot"></span> Rupesh Kumar Rupesh</div>
+        <div class="owner-row"><span class="owner-dot"></span> Abhinesh Ranjan</div>
+        <div class="owner-row"><span class="owner-dot"></span> Amresh Anand</div>
+      </div>
+    </div>
+
+    <div class="about-aside fade-up">
+      <h3>Shop Info</h3>
+      <div class="fact-row">
+        <span class="label">Established</span>
+        <span class="val">1996</span>
+      </div>
+      <div class="fact-row">
+        <span class="label">Location</span>
+        <span class="val">Goshala Market, Haveli Kharagpur, Munger, Bihar – 811213</span>
+      </div>
+      <div class="fact-row">
+        <span class="label">Phone / WhatsApp</span>
+        <span class="val">+91 94318 27156</span>
+      </div>
+      <div class="fact-row">
+        <span class="label">Specialty</span>
+        <span class="val">Power Tools, Hand Tools, Paints, Cleaning, Electrical</span>
+      </div>
+      <div class="fact-row">
+        <span class="label">Google Rating</span>
+        <span class="val">⭐ 5.0 / 5.0</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section id="reviews">
+  <span class="section-tag fade-up">Customer Reviews</span>
+  <h2 class="section-title fade-up">What People Say</h2>
+
+  <div class="reviews-grid">
+    <div class="review-card fade-up">
+      <div class="stars">★★★★★</div>
+      <p class="review-text">"Ganpati Hardware Haveli in Kharagpur has a huge collection of power tools, wall paints, and building materials, making it a convenient one-stop hardware shop. The range of products and brands is impressive and useful for both professionals and homeowners."</p>
+      <div class="reviewer">
+        <div class="reviewer-avatar">RK</div>
+        <div>
+          <div class="reviewer-name">Rakhi Kumari Keshri</div>
+          <div class="reviewer-meta">Google Review · Edited a month ago</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="review-card fade-up">
+      <div class="stars">★★★★★</div>
+      <p class="review-text">"Best Hardware Shop in H. Kharagpur (Munger), Bihar."</p>
+      <div class="reviewer">
+        <div class="reviewer-avatar">AK</div>
+        <div>
+          <div class="reviewer-name">Aakash Keshri</div>
+          <div class="reviewer-meta">Google Local Guide · 7 Reviews · 3 years ago</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="review-card fade-up">
+      <div class="stars">★★★★★</div>
+      <p class="review-text">"Best shop with best products, polite and cooperative owner."</p>
+      <div class="reviewer">
+        <div class="reviewer-avatar">VR</div>
+        <div>
+          <div class="reviewer-name">Varsha Rani</div>
+          <div class="reviewer-meta">Google Review · 3 years ago</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="contact-grid">
+    <div class="fade-up">
+      <span class="section-tag">Get In Touch</span>
+      <h2 class="section-title">We're Here To Help.</h2>
+
+      <div class="contact-info">
+        <div class="contact-row">
+          <span class="contact-row-icon">📍</span>
+          <div>
+            <div class="contact-row-label">Address</div>
+            <div class="contact-row-val">Goshala Market, Haveli Kharagpur,<br>Munger, Bihar – 811213</div>
+          </div>
+        </div>
+        <div class="contact-row">
+          <span class="contact-row-icon">📞</span>
+          <div>
+            <div class="contact-row-label">Phone</div>
+            <div class="contact-row-val"><a href="tel:+919431827156">+91 94318 27156</a></div>
+          </div>
+        </div>
+        <div class="contact-row">
+          <span class="contact-row-icon">👤</span>
+          <div>
+            <div class="contact-row-label">Owners</div>
+            <div class="contact-row-val">Rupesh Kumar Rupesh<br>Abhinesh Ranjan &nbsp;·&nbsp; Amresh Anand</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="contact-actions" style="margin-top:32px;">
+        <a href="tel:+919431827156" class="contact-btn contact-btn-call">📞 Click to Call</a>
+        <a href="https://wa.me/919431827156?text=Hello!%20I%20found%20you%20on%20your%20website%20and%20want%20to%20enquire%20about%20a%20product." target="_blank" class="contact-btn contact-btn-wa">💬 WhatsApp Us</a>
+        <a href="https://maps.google.com/?q=Ganpati+Hardware+Haveli+Kharagpur+Munger+Bihar" target="_blank" class="contact-btn contact-btn-maps">🗺 Open in Google Maps</a>
+      </div>
+    </div>
+
+    <div class="fade-up">
+      <h3 style="font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:1.4rem;color:var(--yellow);margin-bottom:24px;letter-spacing:0.05em;text-transform:uppercase;">Send an Enquiry</h3>
+      <form class="enquiry-form" id="enquiryForm">
+        <div class="form-row">
+          <div>
+            <label class="form-label">Your Name</label>
+            <input type="text" id="fname" placeholder="Full Name" required>
+          </div>
+          <div>
+            <label class="form-label">Phone Number</label>
+            <input type="tel" id="fphone" placeholder="+91 XXXXX XXXXX">
+          </div>
+        </div>
+        <div>
+          <label class="form-label">Product Category</label>
+          <select id="fcategory">
+            <option value="">Select Category</option>
+            <option>Power Tools</option>
+            <option>Taparia Hand Tools</option>
+            <option>Paints (Asian / Berger / Nerolac)</option>
+            <option>Locks & Door Hardware</option>
+            <option>Cleaning Essentials</option>
+            <option>Building & Electrical</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <div>
+          <label class="form-label">Your Message</label>
+          <textarea id="fmsg" placeholder="Tell us what you're looking for…"></textarea>
+        </div>
+        <button type="submit" class="form-submit">Send via WhatsApp →</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- MAP -->
+<section id="map-section">
+  <iframe
+    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3602.3!2d86.6!3d25.1!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2sGanpati+Hardware+Goshala+Market+Haveli+Kharagpur+Munger+Bihar!5e0!3m2!1sen!2sin!4v1"
+    allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+    title="Ganpati Hardware Location Map">
+  </iframe>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div>
+      <div class="footer-logo">GANPATI HARDWARE</div>
+      <div class="footer-owners" style="margin-top:8px;">
+        Rupesh Kumar Rupesh &nbsp;·&nbsp; Abhinesh Ranjan &nbsp;·&nbsp; Amresh Anand
+      </div>
+    </div>
+    <div style="text-align:right;">
+      <a href="tel:+919431827156" style="color:var(--yellow);font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:1.3rem;text-decoration:none;display:block;">+91 94318 27156</a>
+      <a href="https://wa.me/919431827156" target="_blank" style="color:rgba(255,255,255,0.8);font-size:0.9rem;text-decoration:none;">WhatsApp →</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2024 Ganpati Hardware. Est. 1996. Haveli Kharagpur, Munger, Bihar.</span>
+    <span>Goshala Market · Bihar – 811213</span>
+  </div>
+</footer>
+
+<script>
+  // Hamburger
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobileMenu');
+  hamburger.addEventListener('click', () => {
+    mobileMenu.classList.toggle('open');
+  });
+  function closeMobile() {
+    mobileMenu.classList.remove('open');
+  }
+
+  // Fade-up scroll animation
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.12 });
+
+  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+  // Enquiry form → WhatsApp
+  document.getElementById('enquiryForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    const name = document.getElementById('fname').value.trim();
+    const phone = document.getElementById('fphone').value.trim();
+    const category = document.getElementById('fcategory').value;
+    const msg = document.getElementById('fmsg').value.trim();
+
+    const text = `Hello Ganpati Hardware!%0A%0AName: ${encodeURIComponent(name)}%0APhone: ${encodeURIComponent(phone)}%0ACategory: ${encodeURIComponent(category)}%0AMessage: ${encodeURIComponent(msg)}`;
+    window.open(`https://wa.me/919431827156?text=${text}`, '_blank');
+  });
+</script>
+</body>
+</html>
